@@ -2,7 +2,7 @@
 minimal project stub with gradle, kotlin and vertx
 
 
-#using the gradle daemon
+## Using the gradle daemon
 Create a file named gradle.properties in the following directory:
 
 `/home/<username>/.gradle/` (Linux)
