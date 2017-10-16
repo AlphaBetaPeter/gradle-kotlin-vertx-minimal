@@ -29,6 +29,17 @@ compileKotlin {
   }
 }
 
+task buildJar(type: Jar) {
+	manifest {
+        attributes 'Implementation-Title': 'Gradle Jar File Example',
+        	'Implementation-Version': '1',
+        	'Main-Class': 'alphabetapeter.MainKt'
+    }
+    baseName = 'application'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
 dependencies {
   compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
   compile "io.vertx:vertx-core:$vertx_version"
@@ -38,5 +49,5 @@ dependencies {
 }
 
 task wrapper(type: Wrapper) {
-  gradleVersion = "3.2"
+  gradleVersion = "4.2"
 }

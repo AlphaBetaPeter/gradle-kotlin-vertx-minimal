@@ -1,3 +1,3 @@
 #!/bin/bash
 gradle wrapper
-./gradlew run
+./gradlew build --info
