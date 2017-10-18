@@ -3,13 +3,13 @@ package alphabetapeter
 import io.vertx.core.Vertx
 
 fun main(args: Array<String>) {
+	println("Server starting")
 	val vertx = Vertx.vertx()
 	vertx.deployVerticle(ServiceVerticle(), { res ->
 		if (res.succeeded()) {
-			println("Server started")
-			println("Deployment id is: ${res.result()}")
+			println("Deployment succeeded. Id is: ${res.result()}")
 		} else {
-			println("Deployment failed!")
+			println("Deployment failed! ${res.cause()}")
 		}
 	})
 }
