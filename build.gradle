@@ -45,14 +45,17 @@ task buildJar(type: Jar) {
     with jar
 }
 
+task stage(dependsOn: ['buildJar', 'clean'])
+buildJar.mustRunAfter clean
+
+task wrapper(type: Wrapper) {
+  gradleVersion = "4.2"
+}
+
 dependencies {
   compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
   compile "io.vertx:vertx-core:$vertx_version"
   compile "io.vertx:vertx-web:$vertx_version"
   testCompile 'junit:junit:4.11'
   testCompile "org.jetbrains.kotlin:kotlin-test-junit:$kotlin_version"
-}
-
-task wrapper(type: Wrapper) {
-  gradleVersion = "4.2"
 }
